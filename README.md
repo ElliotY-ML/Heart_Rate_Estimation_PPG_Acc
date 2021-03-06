@@ -5,75 +5,77 @@ part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udaci
 **Introduction**  
 Pulse rate estimation, also known as heart rate monitoring, is a common feature in wearable devices.  The ability to measure pulse rates outside clinical settings has allowed users to gain unprecedented access to data and information about their personal health.  Users can measure their heart rates throughout the day during various activities to quantify workout intensities and establish their normal heart rate based on large amounts of data.  
 
-The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse rate estimation at the wrist. A short description of how a PPG functions:  
-- The sensor emits light that is absorbed by red blood cells, and then the reflected light is measured by the sensor's photodector.  
+The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse rate estimation at the wrist.  
+A short description of how a PPG functions:  
+- The PPG sensor emits light that is absorbed by red blood cells. Light that is not absorbed is reflected back to the PPG sensor's photodetector where the intensity is measured.  
 - The difference between emitted light and reflected light is correlated to the amount of present blood cells.  
-- When the heart contracts, blood is released the to body and wrist, so more of the PPGs is absorbed.  
-- When the heart relaxes, blood returns to the heart from the body, so that there are less blood cells that absorb the light at the wrist location.  
+- When the heart contracts, blood is released the to body and wrist, so more of the PPGs light is absorbed.  
+- When the heart relaxes, blood returns to the heart from the body, so that there are less blood cells that absorb the light at the wrist.  
+- The intensities of light absorption over time form the time series data.  
 
-The amounts (intensities) of light absorption over time form the time series data.  
-For this project, an algorithm was created to estimate pulse rates from PPG sensor data taken from a study of people running on a treadmill at changing speeds.
-  
+For this project, an algorithm was created to estimate pulse rates from PPG sensor data taken from a study of people running on a treadmill at changing speeds.  
 
 **Utilizing Accelerometers to Reduce Motion-Related Signals**  
 A source of noise for standalone wrist-worn PPG sensors is arm motion.  Swinging an arm back and forth affects how blood flows through the wrist, and this is adds complexity to PPG data.    
 
 To reduce the arm motion noise from PPG data, this project uses data from acceleratometers which are also frequently built into wearable devices.  3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
-The performance requirement for this pulse rate estimation algorithm is to meet a mean absolute error, at 90% availability of estimates, of less than 15 BPM compared to ground truth concurrent ECG measurements.
+The performance requirement for this pulse rate estimation algorithm is to meet a mean absolute error, at 90% availability of estimates, of less than 15 BPM compared to pulse rates computed from concurrent ECG measurements.
 
- 
 **Algorithm and Performance**
 
 There are two Parts in this project:
 - [Part 1: Pulse Rate Algorithm](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/tree/master/Part%20I%20Pulse%20Rate%20Algorithm)
 - [Part 2: Clinical Application](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/tree/master/Part%20II%20Clinical%20Application)
 
-**Part 1**  
+**Part 1: Pulse Rate Algorithm**  
 
-`/Part I Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` contains exploratory data analysis, pulse rate algorithm, algorithm evaluation, and project write up.
+[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
 
-This algorithm determines the first pulse rate estimate with the first 8 seconds of data and subsequent estimates occur every 2 seconds afterward with 6 seconds of overlap between adjacent data windows. 
-
-This algorithm meets the project's requirement that the mean absolute error at 90% availability is less than 15 BPM on the test dataset.
+This algorithm determines the first pulse rate estimate with the first 8 seconds of data and subsequent estimates occur every 2 seconds afterward with 6 seconds of overlap between adjacent data windows.  
+It meets the project's requirement that the mean absolute error at 90% availability is less than 15 BPM on the test dataset.
 Using the training dataset, the error is 11.96 BPM. With the test dataset, the error is 7.55 BPM.
 
-For full discussion, please read the "Project Write-up" section in [`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb).
+For full discussion, please read the "Project Write-up" section.  
 
-**Part 2** 
 
-`/Part II Clinical Application/clinical_app_EY_completed.ipynb` contains an analysis of a heart rate data set from the Cardiac Arrythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
+**Part 2: Clinical Application** 
+
+[`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
 ![Heart Rate Trend](Part%20II%20Clinical%20Application/out/Resting_HR_by_Age_Groups.png)
 
-For full discussion, please read the "Clinical Conclusion" section in [`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb).
+For full discussion, please read the "Clinical Conclusion" section.
 
 ### Datasets
+
 **Part 1: Pulse Rate Algorithm**
+
 The dataset used to train this algorithm is from Z. Zhang, Z. Pi, and B.Liu's paper "TROIKA: A General Framework for Heart Rate Monitoring Using Wrist-Type Photoplethysmographic Signals During Intensive Physical Exercise." In their study, 12 subjects aged 18 to 35 were monitored as each subject ran on a treadmill with changing speeds for 5 minutes in this interval:
 > Rest(30s)-> 6 or 8km/h(1min) -> 12 or 15km/h(1min) -> 6 or 8km/h(1min) -> 12 or 15km/h(1min) -> Rest(30s)
 
 Two-channel PPG signals, 3-axis acceleration signals, and one-channel ECG signals were simultaneously recorded. All signals were sampled at 125Hz.
 
-The training dataset is contained in the `/data/datasets/troika/training_data` folder.  Raw data file are named in the format 'DATA_XX_TYPEXX'. Each file has 6 rows: Row1 ECG data, Rows 2 and 3 are the two channels of PPG; and Rows 4,5, and 6 are the x-, y-, and z-axis accelerameter measurements.
+The training dataset is located in the `/data/datasets/troika/training_data` folder.  Raw data files are named in the format 'DATA_XX_TYPEXX'. Each file has 6 rows: Row1 ECG data, Rows 2 and 3 are the two channels of PPG; and Rows 4,5, and 6 are the x-, y-, and z-axis accelerameter measurements.  
 Files containing ground truth pulse rates are named in the format 'REF_XX_TYPEXX'. The ground truth is calculated from the ECG data in the data files. Z.Zhang et al calculate the ground truth pulse rates with every 8-second window and overlap of 6-seconds.
 
 **References**  
-[1] **Troika** - Zhilin Zhang, Zhouyue Pi, Benyuan Liu, ‘‘TROIKA: A General Framework for Heart Rate Monitoring Using Wrist-Type Photoplethysmographic Signals During Intensive Physical Exercise,’’IEEE Trans. on Biomedical Engineering, vol. 62, no. 2, pp. 522-531, February 2015. Link
+[1] Zhilin Zhang, Zhouyue Pi, Benyuan Liu, ‘‘TROIKA: A General Framework for Heart Rate Monitoring Using Wrist-Type Photoplethysmographic Signals During Intensive Physical Exercise,’’IEEE Trans. on Biomedical Engineering, vol. 62, no. 2, pp. 522-531, February 2015. [Link](https://arxiv.org/pdf/1409.5181.pdf)
 
 **Part 2: Clinical Application**  
 
-The data from this project comes from the Cardiac Arrythmia Suppression Trial (CAST), which was sponsored by the National Heart, Lung, and Blood Institute (NHLBI). CAST collected 24 hours of heart rate data from ECGs from people who have had a myocardial infarction (MI) within the past two years.[1] This data has been smoothed and resampled to more closely resemble PPG-derived pulse rate data from a wrist wearable.[2]  
+The dataset comes from the Cardiac Arrythmia Suppression Trial (CAST) sponsored by the National Heart, Lung, and Blood Institute (NHLBI). It consists of 24 hours of heart rate data from ECGs monitoring people who have experienced a myocardial infarction within the past two years.[1]  
+This data has been smoothed and resampled to more closely resemble PPG-derived pulse rate data from a wrist wearable.[2]  
 The training dataset is contained in the `/data/datasets/crisdb/` folder.
 
 
 **References**  
-[1] CAST RR Interval Sub-Study Database Citation - Stein PK, Domitrovich PP, Kleiger RE, Schechtman KB, Rottman JN. Clinical and demographic determinants of heart rate variability in patients post myocardial infarction: insights from the Cardiac Arrhythmia Suppression Trial (CAST). Clin Cardiol 23(3):187-94; 2000 (Mar)
-[2] Physionet Citation - Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals (2003). Circulation. 101(23):e215-e220.
+[1] Stein PK, Domitrovich PP, Kleiger RE, Schechtman KB, Rottman JN. "Clinical and Demographic Determinants of Heart Rate Variability in Patients Post Myocardial Infarction: Insights from the Cardiac Arrhythmia Suppression Trial (CAST)". Clin Cardiol 23(3):187-94; 2000 (Mar)  
+[2] Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. "PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals" (2003). Circulation. 101(23):e215-e220. [Link](https://physionet.org/content/crisdb/1.0.0/)
 
 
 ## Getting Started
 
 1. Set up your Anaconda environment.  
-2. Clone `https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc` GitHub repo to your local machine.
+2. Clone `https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc.git` GitHub repo to your local machine.
 3. Open `Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` with Jupyter Notebook to explore EDA, signal processing, PPG and Accelerometer waveform analysis, and pulse rate estimation confidence calculation.
 4. Open `Part 2: Clinical Application/clinical_app_EY_completed.ipynb` with Jupyter Notebook for an analysis of resting heart rates for Cardiac Arrythmia Suppression Trial (CAST) dataset. 
 
@@ -123,8 +125,8 @@ conda install git
 
 1. Clone the repository, and navigate to the downloaded folder. This may take a minute or two to clone due to the included image data.
 ```
-git clone https://github.com/ElliotY-ML/Predict_Diabetic_Patient_Hospital_Stay
-cd Predict_Diabetic_Patient_Hospital_Stay
+git clone https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc.git
+cd Heart_Rate_Estimation_PPG_Acc
 ```
 
 2. Create (and activate) a new environment, named `udacity-ehr-env` with Python 3.7. If prompted to proceed with the install `(Proceed [y]/n)` type y.
@@ -151,15 +153,15 @@ pip install -r pkgs.txt
 ```
 
 
-## Project Instructions
+## Repository Instructions
 
 Please read Udacity's original project instructions prompt in the `Project_Instructions.md` markdown file.
 
-Additional instructions for each Part are provided in each folder's `README.md` file.
+Additional instructions for each part of this project are provided in each corresponding folder's `README.md` file.
 
 **Part 1: Pulse Rate Algorithm**
 
-`/Part I Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` contains exploratory data analysis, pulse rate algorithm, algorithm evaluation, and project write up.
+[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
 
 Inputs: 
 - .mat files containing input files contain PPG, acceleratometer, and measurements. 
@@ -169,19 +171,19 @@ Outputs:
 - Estimated Pulse Rate, Ground Truth Pulse Rate, Estimation Confidence, and Error.  
 - Aggregate mean absolute error (BPM) at 90% availability of pulse rate estimates from this algorithm.
 
+
 1. Open `/Part I Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` with Jupyter Notebook
 2. The `RunPulseRateAlgorithm(data_fl,ref_fl)` function does the following:
 	1. Load input datasets.
 	2. Apply `scipy.signal` functions to Bandpass Filter sensor measurements for frequencies that are within plausible pulse rate frequencies [40 BPM, 240 BPM].
-	3. Apply `matplotlib.pyplot.specgram` to discretize sensor measurements into time windows.  For each time window, calculate characteristic frequencies and amplitudes.
-	4. Rank and compare PPG characteristic frequencies to accelerometer frequencies to compensate for arm motions.
+	3. Apply `matplotlib.pyplot.specgram` to discretize sensor measurements into time windows, and for each time window, compute characteristic frequencies and amplitudes.
+	4. Rank PPG characteristic frequencies by amplitude and compare to accelerometer frequencies to compensate for arm motions.
 	5. Select PPG characteristic frequency to be the pulse rate estimate for that time window.  Calculate confidence in the pulse rate estimate.
 	6. Calculate the absolute difference between pulse rate estimate and ground truth pulse rate.
-3. The `Evaluate()` top level function loads the complete Troika dataset, runs `RunPulseRateAlgorithm` on the loaded dataset, and computes the aggregate mean absolute error (BPM) at 90% availability.
+3. The `Evaluate()` top level function loads the entire Troika dataset, runs `RunPulseRateAlgorithm` on the loaded dataset, and computes the aggregate mean absolute error (BPM) at 90% availability.
 
 **Part 2: Clinical Application**  
 `/Part II Clinical Application/clinical_app_EY_completed.ipynb` contains an analysis of a heart rate data set from the Cardiac Arrythmia Suppression Trial (CAST).  
-
 Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups. 
 
 Inputs:
@@ -192,14 +194,16 @@ Outputs:
 - Plot of Resting Heart Rate by Age Groups
 - Discussion of results in "Clinical Conclusion" section
 
+
 1. Open `/Part II Clinical Application/clinical_app_EY_completed.ipynb` with Juypter Notebook
 2. Load `metatdata.csv`
 3. Follow the notebook for exploratory data analysis (EDA) of CAST dataset metadata.
 4. Extract data from .npz files with `numpy.load` function.
-5. The `AgeAndRHR(metadata, npzFileName)` function computes the resting heart rate from input time series by finding the lowest 5th percentil value in the heart rate data.
+5. The `AgeAndRHR(metadata, npzFileName)` function computes the resting heart rate from time-series input by finding the lowest 5th percentile value in the heart rate data.
 6. A pandas DataFrame is created to store resting heart rates information, along with sex, and age group for all subjects in the dataset.
 7. Plot "Resting Heart Rates by Age Groups" with `seaborn.lineplot`.
 8. The "Clinical Conclusion" discusses observations from the "Resting Heart Rates by Age Groups" plot. 
+
 
 ## License
 
