@@ -105,11 +105,11 @@ Using Anaconda consists of the following:
 [lin64]: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 [lin32]: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86.sh
 
-**Install** [miniconda](http://conda.pydata.org/miniconda.html) on your machine. Detailed instructions:
+**Install** [miniconda](https://docs.conda.io/en/latest/miniconda.html) on your machine. Detailed instructions:
 
-- **Linux:** http://conda.pydata.org/docs/install/quick.html#linux-miniconda-install
-- **Mac:** http://conda.pydata.org/docs/install/quick.html#os-x-miniconda-install
-- **Windows:** http://conda.pydata.org/docs/install/quick.html#windows-miniconda-install
+- **Linux:** https://docs.conda.io/en/latest/miniconda.html#linux-installers
+- **Mac:** https://docs.conda.io/en/latest/miniconda.html#macosx-installers
+- **Windows:** https://docs.conda.io/en/latest/miniconda.html#windows-installers
 
 ## 2. Create and Activate the Environment
 
@@ -129,28 +129,20 @@ git clone https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc.git
 cd Heart_Rate_Estimation_PPG_Acc
 ```
 
-2. Create (and activate) a new environment, named `udacity-ehr-env` with Python 3.7. If prompted to proceed with the install `(Proceed [y]/n)` type y.
+2. Create and activate a new environment, named `PPG` with Python 3.8. Be sure to run the command from the project root directory since the environment.yml and pkgs.txt files are there.  If prompted to proceed with the install `(Proceed [y]/n)` type y.
 
 	- __Linux__ or __Mac__: 
 	```
-	conda create -n udacity-ehr-env python=3.7
-	source activate udacity-ehr-env
+	conda create --name PPG --file pkgs.txt
+	source activate PPG
 	```
 	- __Windows__: 
 	```
-	conda create --name udacity-ehr-env python=3.7
-	activate udacity-ehr-env
+	conda env create -f environment.yml
+	conda activate PPG
 	```
 	
-	At this point your command line should look something like: `(udacity-ehr-env) <User>:USER_DIR <user>$`. The `(udacity-ehr-env)` indicates that your environment has been activated, and you can proceed with further package installations.
-
-
-
-6. Install a few required pip packages, which are specified in the requirements text file. Be sure to run the command from the project root directory since the requirements.txt file is there.
- 
-```
-pip install -r pkgs.txt
-```
+	At this point your command line should look something like: `(PPG) <User>:USER_DIR <user>$`. The `(PPG)` indicates that your environment has been activated.
 
 
 ## Repository Instructions
