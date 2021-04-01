@@ -18,7 +18,7 @@ For this project, an algorithm was created to estimate pulse rates from PPG sens
 **Utilizing Accelerometers to Reduce Motion-Related Signals**  
 A source of noise for standalone wrist-worn PPG sensors is arm motion.  Swinging an arm back and forth affects how blood flows through the wrist, and this is adds complexity to PPG data.    
 
-To reduce the arm motion noise from PPG data, this project uses data from acceleratometers which are also frequently built into wearable devices.  3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
+To reduce the arm motion noise from PPG data, this project uses data from accelerometers which are also frequently built into wearable devices.  3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
 The performance requirement for this pulse rate estimation algorithm is to meet a mean absolute error, at 90% availability of estimates, of less than 15 BPM compared to pulse rates computed from concurrent ECG measurements.
 
 **Algorithm and Performance**
@@ -52,9 +52,9 @@ For full discussion, please read the "Clinical Conclusion" section.
 The dataset used to train this algorithm is from Z. Zhang, Z. Pi, and B.Liu's paper "TROIKA: A General Framework for Heart Rate Monitoring Using Wrist-Type Photoplethysmographic Signals During Intensive Physical Exercise." In their study, 12 subjects aged 18 to 35 were monitored as each subject ran on a treadmill with changing speeds for 5 minutes in this interval:
 > Rest(30s)-> 6 or 8km/h(1min) -> 12 or 15km/h(1min) -> 6 or 8km/h(1min) -> 12 or 15km/h(1min) -> Rest(30s)
 
-Two-channel PPG signals, 3-axis acceleration signals, and one-channel ECG signals were simultaneously recorded. All signals were sampled at 125Hz.
+Two-channel PPG signals, 3-axis accelerometer signals, and one-channel ECG signals were simultaneously recorded. All signals were sampled at 125Hz.
 
-The training dataset is located in the `/data/datasets/troika/training_data` folder.  Raw data files are named in the format 'DATA_XX_TYPEXX'. Each file has 6 rows: Row1 ECG data, Rows 2 and 3 are the two channels of PPG; and Rows 4,5, and 6 are the x-, y-, and z-axis accelerameter measurements.  
+The training dataset is located in the `/data/datasets/troika/training_data` folder.  Raw data files are named in the format 'DATA_XX_TYPEXX'. Each file has 6 rows: Row1 ECG data, Rows 2 and 3 are the two channels of PPG; and Rows 4,5, and 6 are the x-, y-, and z-axis accelerometer measurements.  
 Files containing ground truth pulse rates are named in the format 'REF_XX_TYPEXX'. The ground truth is calculated from the ECG data in the data files. Z.Zhang et al calculate the ground truth pulse rates with every 8-second window and overlap of 6-seconds.
 
 **References**  
@@ -156,7 +156,7 @@ Additional instructions for each part of this project are provided in each corre
 [`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
 
 Inputs: 
-- .mat files containing input files contain PPG, acceleratometer, and measurements. 
+- .mat files containing input files contain PPG, accelerometer, and measurements. 
 - .mat files containging ground truth pulse rates calculated from ECG measurements.
 
 Outputs:
