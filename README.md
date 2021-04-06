@@ -40,8 +40,9 @@ For full discussion, please read the "Project Write-up" section.
 
 **Part 2: Clinical Application** 
 
-[`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
+[`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
 ![Heart Rate Trend](Part%20II%20Clinical%20Application/out/Resting_HR_by_Age_Groups.png)
+**Figure 1.** Mean resting heart rates by age groups with 95% confidence intervals, computed from the Cardiac Arrhythmia Suppression Trial(CAST) dataset.
 
 For full discussion, please read the "Clinical Conclusion" section.
 
@@ -62,7 +63,7 @@ Files containing ground truth pulse rates are named in the format 'REF_XX_TYPEXX
 
 **Part 2: Clinical Application**  
 
-The dataset comes from the Cardiac Arrythmia Suppression Trial (CAST) sponsored by the National Heart, Lung, and Blood Institute (NHLBI). It consists of 24 hours of heart rate data from ECGs monitoring people who have experienced a myocardial infarction within the past two years.[1]  
+The dataset comes from the Cardiac Arrhythmia Suppression Trial (CAST) sponsored by the National Heart, Lung, and Blood Institute (NHLBI). It consists of 24 hours of heart rate data from ECGs monitoring people who have experienced a myocardial infarction within the past two years.[1]  
 This data has been smoothed and resampled to more closely resemble PPG-derived pulse rate data from a wrist wearable.[2]  
 The training dataset is contained in the `/data/datasets/crisdb/` folder.
 
@@ -77,7 +78,7 @@ The training dataset is contained in the `/data/datasets/crisdb/` folder.
 1. Set up your Anaconda environment.  
 2. Clone `https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc.git` GitHub repo to your local machine.
 3. Open `Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` with Jupyter Notebook to explore EDA, signal processing, PPG and Accelerometer waveform analysis, and pulse rate estimation confidence calculation.
-4. Open `Part 2: Clinical Application/clinical_app_EY_completed.ipynb` with Jupyter Notebook for an analysis of resting heart rates for Cardiac Arrythmia Suppression Trial (CAST) dataset. 
+4. Open `Part 2: Clinical Application/clinical_app_EY_completed.ipynb` with Jupyter Notebook for an analysis of resting heart rates for Cardiac Arrhythmia Suppression Trial (CAST) dataset. 
 
 
 ### Dependencies
@@ -175,7 +176,7 @@ Outputs:
 3. The `Evaluate()` top level function loads the entire Troika dataset, runs `RunPulseRateAlgorithm` on the loaded dataset, and computes the aggregate mean absolute error (BPM) at 90% availability.
 
 **Part 2: Clinical Application**  
-`/Part II Clinical Application/clinical_app_EY_completed.ipynb` contains an analysis of a heart rate data set from the Cardiac Arrythmia Suppression Trial (CAST).  
+`/Part II Clinical Application/clinical_app_EY_completed.ipynb` contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  
 Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups. 
 
 Inputs:
