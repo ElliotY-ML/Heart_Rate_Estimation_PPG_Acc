@@ -9,7 +9,7 @@ The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse 
 A short description of how a PPG functions:  
 - The PPG sensor emits light that is absorbed by red blood cells. Light that is not absorbed is reflected back to the PPG sensor's photodetector where the intensity is measured.  
 - The difference between emitted light and reflected light is correlated to the amount of present blood cells.  
-- When the heart contracts, blood is released the to body and wrist, so more of the PPGs light is absorbed.  
+- When the heart contracts, blood is released to the body and wrist, so more of the PPGs light is absorbed.  
 - When the heart relaxes, blood returns to the heart from the body, so that there are less blood cells that absorb the light at the wrist.  
 - The intensities of light absorption over time form the time series data.  
 
@@ -117,7 +117,7 @@ Using Anaconda consists of the following:
 For Windows users, these following commands need to be executed from the **Anaconda prompt** as opposed to a Windows terminal window. For Mac, a normal terminal window will work. 
 
 #### Git and version control
-These instructions also assume you have `git` installed for working with Github from a terminal window, but if you do not, you can download that first with the command:
+These instructions also assume you have `git` installed for working with GitHub from a terminal window, but if you do not, you can download that first with the command:
 ```
 conda install git
 ```
@@ -158,7 +158,7 @@ Additional instructions for each part of this project are provided in each corre
 
 Inputs: 
 - .mat files containing input files contain PPG, accelerometer, and measurements. 
-- .mat files containging ground truth pulse rates calculated from ECG measurements.
+- .mat files containing ground truth pulse rates calculated from ECG measurements.
 
 Outputs:
 - Estimated Pulse Rate, Ground Truth Pulse Rate, Estimation Confidence, and Error.  
