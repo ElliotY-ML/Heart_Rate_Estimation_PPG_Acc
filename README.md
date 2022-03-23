@@ -1,5 +1,5 @@
 # Motion Compensated Pulse Rate Estimation
-This repository contains a completed cap-stone project for Udacity's "Applying AI to Wearable Device Data" course, 
+This repository contains a completed cap-stone project for the Udacity "Applying AI to Wearable Device Data" course, 
 part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udacity instructors and met project specifications.
 
 **Introduction**  
@@ -148,7 +148,7 @@ cd Heart_Rate_Estimation_PPG_Acc
 
 ## Repository Instructions
 
-Please read Udacity's original project instructions prompt in the `Project_Instructions.md` markdown file.
+Please read the original Udacity project instructions in [`Udacity_Project_Instructions.md`](Udacity_Project_Instructions.md).
 
 Additional instructions for each part of this project are provided in each corresponding folder's `README.md` file.
 
