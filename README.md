@@ -2,7 +2,20 @@
 This repository contains a completed cap-stone project for the Udacity "Applying AI to Wearable Device Data" course, 
 part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udacity instructors and met project specifications.
 
-**Introduction**  
+# Table of Contents
+- [Introduction](#introduction)
+	- [Utilizing Accelerometers to Reduce Motion-Related Signal Noise](#utilizing-accelerometers-to-reduce-motion-related-signal-noise)
+	- [Algorithm and Performance](#algorithm-and-performance)
+	- [Datasets](#datasets)
+- [Getting Started](#getting-started)
+	- [Installation](#1-installation)
+	- [Create and Activate the Environment](#2-create-and-activate-the-environment)
+- [Repository Instructions](#repository-instructions)
+	- [Part 1: Pulse Rate Algorithm](#part-1-pulse-rate-algorithm)
+	- [Part 2: Clinical Application ](#part-2-clinical-application )
+- [License](#license)
+
+# Introduction  
 Pulse rate estimation, also known as heart rate monitoring, is a common feature in wearable devices.  The ability to measure pulse rates outside clinical settings has allowed users to gain unprecedented access to data and information about their personal health.  Users can measure their heart rates throughout the day during various activities to quantify workout intensities and establish their normal heart rate based on large amounts of data.  
 
 The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse rate estimation at the wrist.  
@@ -15,13 +28,13 @@ A short description of how a PPG functions:
 
 For this project, an algorithm was created to estimate pulse rates from PPG sensor data taken from a study of people running on a treadmill at changing speeds.  
 
-**Utilizing Accelerometers to Reduce Motion-Related Signals**  
+### Utilizing Accelerometers to Reduce Motion-Related Signal Noise  
 A source of noise for standalone wrist-worn PPG sensors is arm motion.  Swinging an arm back and forth affects how blood flows through the wrist, and this is adds complexity to PPG data.    
 
 To reduce the arm motion noise from PPG data, this project uses data from accelerometers which are also frequently built into wearable devices.  3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
 The performance requirement for this pulse rate estimation algorithm is to meet a mean absolute error, at 90% availability of estimates, of less than 15 BPM compared to pulse rates computed from concurrent ECG measurements.
 
-**Algorithm and Performance**
+### Algorithm and Performance
 
 There are two Parts in this project:
 - [Part 1: Pulse Rate Algorithm](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/tree/master/Part%20I%20Pulse%20Rate%20Algorithm)
@@ -29,7 +42,7 @@ There are two Parts in this project:
 
 **Part 1: Pulse Rate Algorithm**  
 
-[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
+[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](./Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
 
 This algorithm determines the first pulse rate estimate with the first 8 seconds of data and subsequent estimates occur every 2 seconds afterward with 6 seconds of overlap between adjacent data windows.  
 It meets the project's requirement that the mean absolute error at 90% availability is less than 15 BPM on the test dataset.
@@ -40,8 +53,8 @@ For full discussion, please read the "Project Write-up" section.
 
 **Part 2: Clinical Application** 
 
-[`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
-![Heart Rate Trend](Part%20II%20Clinical%20Application/out/Resting_HR_by_Age_Groups.png)
+[`Part 2: Clinical Application/clinical_app_EY_completed.ipynb`](./Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups.  
+![Heart Rate Trend](./Part%20II%20Clinical%20Application/out/Resting_HR_by_Age_Groups.png)
 **Figure 1.** Mean resting heart rates by age groups with 95% confidence intervals, computed from the Cardiac Arrhythmia Suppression Trial(CAST) dataset.
 
 For full discussion, please read the "Clinical Conclusion" section.
@@ -73,7 +86,7 @@ The training dataset is contained in the `/data/datasets/crisdb/` folder.
 [2] Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. "PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals" (2003). Circulation. 101(23):e215-e220. [Link](https://physionet.org/content/crisdb/1.0.0/)
 
 
-## Getting Started
+# Getting Started
 
 1. Set up your Anaconda environment.  
 2. Clone `https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc.git` GitHub repo to your local machine.
@@ -81,17 +94,13 @@ The training dataset is contained in the `/data/datasets/crisdb/` folder.
 4. Open `Part 2: Clinical Application/clinical_app_EY_completed.ipynb` with Jupyter Notebook for an analysis of resting heart rates for Cardiac Arrhythmia Suppression Trial (CAST) dataset. 
 
 
-### Dependencies
+## Dependencies
 Using Anaconda consists of the following:
 
 1. Install [`miniconda`](http://conda.pydata.org/miniconda.html) on your computer, by selecting the latest Python version for your operating system. If you already have `conda` or `miniconda` installed, you should be able to skip this step and move on to step 2.
-2. Create and activate * a new `conda` [environment](http://conda.pydata.org/docs/using/envs.html).
+2. Create and activate a new `conda` [environment](http://conda.pydata.org/docs/using/envs.html).
 
-\* Each time you wish to work on any exercises, activate your `conda` environment!
-
----
-
-## 1. Installation
+### 1. Installation
 
 **Download** the latest version of `miniconda` that matches your system.
 
@@ -112,11 +121,11 @@ Using Anaconda consists of the following:
 - **Mac:** https://docs.conda.io/en/latest/miniconda.html#macosx-installers
 - **Windows:** https://docs.conda.io/en/latest/miniconda.html#windows-installers
 
-## 2. Create and Activate the Environment
+### 2. Create and Activate the Environment
 
 For Windows users, these following commands need to be executed from the **Anaconda prompt** as opposed to a Windows terminal window. For Mac, a normal terminal window will work. 
 
-#### Git and version control
+### Git and version control
 These instructions also assume you have `git` installed for working with GitHub from a terminal window, but if you do not, you can download that first with the command:
 ```
 conda install git
@@ -146,15 +155,15 @@ cd Heart_Rate_Estimation_PPG_Acc
 	At this point your command line should look something like: `(PPG) <User>:USER_DIR <user>$`. The `(PPG)` indicates that your environment has been activated.
 
 
-## Repository Instructions
+# Repository Instructions
 
 Please read the original Udacity project instructions in [`Udacity_Project_Instructions.md`](Udacity_Project_Instructions.md).
 
 Additional instructions for each part of this project are provided in each corresponding folder's `README.md` file.
 
-**Part 1: Pulse Rate Algorithm**
+## Part 1: Pulse Rate Algorithm
 
-[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](https://github.com/ElliotY-ML/Heart_Rate_Estimation_PPG_Acc/blob/master/Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
+[`Part 1: Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb`](./Part%20I%20Pulse%20Rate%20Algorithm/pulse_rate_EY_completed.ipynb) contains exploratory data analysis, pulse rate algorithm, algorithm performance, and discussion about this project.
 
 Inputs: 
 - .mat files containing input files contain PPG, accelerometer, and measurements. 
@@ -167,7 +176,7 @@ Outputs:
 
 1. Open `/Part I Pulse Rate Algorithm/pulse_rate_EY_completed.ipynb` with Jupyter Notebook
 2. The `RunPulseRateAlgorithm(data_fl,ref_fl)` function does the following:
-	1. Load input datasets.
+	1. Import input datasets into arrays.
 	2. Apply `scipy.signal` functions to Bandpass Filter sensor measurements for frequencies that are within plausible pulse rate frequencies [40 BPM, 240 BPM].
 	3. Apply `matplotlib.pyplot.specgram` to discretize sensor measurements into time windows, and for each time window, compute characteristic frequencies and amplitudes.
 	4. Rank PPG characteristic frequencies by amplitude and compare to accelerometer frequencies to compensate for arm motions.
@@ -175,8 +184,8 @@ Outputs:
 	6. Calculate the absolute difference between pulse rate estimate and ground truth pulse rate.
 3. The `Evaluate()` top level function loads the entire Troika dataset, runs `RunPulseRateAlgorithm` on the loaded dataset, and computes the aggregate mean absolute error (BPM) at 90% availability.
 
-**Part 2: Clinical Application**  
-`/Part II Clinical Application/clinical_app_EY_completed.ipynb` contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  
+## Part 2: Clinical Application  
+[`Part II Clinical Application/clinical_app_EY_completed.ipynb`](./Part%20II%20Clinical%20Application/clinical_app_EY_completed.ipynb) contains an analysis of a heart rate data set from the Cardiac Arrhythmia Suppression Trial (CAST).  
 Resting heart rates of over 1,500 subjects are computed and visualized to understand heart rate trends for different age groups. 
 
 Inputs:
@@ -189,7 +198,7 @@ Outputs:
 
 
 1. Open `/Part II Clinical Application/clinical_app_EY_completed.ipynb` with Juypter Notebook
-2. Load `metatdata.csv`
+2. Import `metatdata.csv` into a DataFrame
 3. Follow the notebook for exploratory data analysis (EDA) of CAST dataset metadata.
 4. Extract data from .npz files with `numpy.load` function.
 5. The `AgeAndRHR(metadata, npzFileName)` function computes the resting heart rate from time-series input by finding the lowest 5th percentile value in the heart rate data.
@@ -198,6 +207,6 @@ Outputs:
 8. The "Clinical Conclusion" discusses observations from the "Resting Heart Rates by Age Groups" plot. 
 
 
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md)
