@@ -19,12 +19,12 @@ part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udaci
 Pulse rate estimation, also known as heart rate monitoring, is a common feature in wearable devices.  The ability to measure pulse rates outside clinical settings has allowed users to gain unprecedented access to data and information about their personal health.  Users can measure their heart rates throughout the day during various activities to quantify workout intensities and establish their normal heart rate based on large amounts of data.  
 
 The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse rate estimation at the wrist.  
-A short description of how a PPG functions:  
-- The PPG sensor emits light that is absorbed by red blood cells. Light that is not absorbed is reflected back to the PPG sensor's photodetector where the intensity is measured.  
-- The difference between emitted light and reflected light is correlated to the amount of present blood cells.  
-- When the heart contracts, blood is released to the body and wrist, so more of the PPGs light is absorbed.  
-- When the heart relaxes, blood returns to the heart from the body, so that there are less blood cells that absorb the light at the wrist.  
-- The intensities of light absorption over time form the time series data.  
+A short description of how a reflectance PPG functions:  
+- The PPG device emits light that is absorbed by red blood cells. Light, that has not been absorbed or transmitted, is reflected back and measured by the PPG's photodetector.  
+- The reflected light is correlated to the amount of present blood cells.  
+- When the heart contracts, blood is released to the body and wrist, so fewer of the PPG's light is reflected.  
+- When the heart relaxes, blood returns to the heart from the body, so more of the light is reflected.  
+- The intensities of light reflected over time form the time series data.  
 
 For this project, an algorithm was created to estimate pulse rates from PPG sensor data taken from a study of people running on a treadmill at changing speeds.  
 
