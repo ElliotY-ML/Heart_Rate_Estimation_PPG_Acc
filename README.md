@@ -4,6 +4,7 @@ part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udaci
 
 # Table of Contents
 - [Introduction](#introduction)
+	- [Pulse Rate Estimation Using Photoplethysmography (PPG) Sensor](#pulse-rate-estimation-using-photoplethysmography-ppg-sensor)
 	- [Utilizing Accelerometers to Reduce Motion-Related Signal Noise](#utilizing-accelerometers-to-reduce-motion-related-signal-noise)
 	- [Algorithm and Performance](#algorithm-and-performance)
 	- [Datasets](#datasets)
@@ -16,10 +17,11 @@ part of the AI for Healthcare Nanodegree program.  It has been reviewed by Udaci
 - [License](#license)
 
 # Introduction  
-Pulse rate estimation, also known as heart rate monitoring, is a common feature in wearable devices.  The ability to measure pulse rates outside clinical settings has allowed users to gain unprecedented access to data and information about their personal health.  Users can measure their heart rates throughout the day during various activities to quantify workout intensities and establish their normal heart rate based on large amounts of data.  
 
-The Photoplethysmogram (PPG) sensor is built into smart watches to enable pulse rate estimation at the wrist.  
-A short description of how a reflectance PPG functions:  
+### Pulse Rate Estimation Using Photoplethysmography (PPG) Sensor
+Pulse rate estimation, also known as heart rate monitoring, is a common feature in wearable devices. The ability to measure pulse rates outside clinical settings has allowed users to gain access to data and information about their personal health. Users can measure their heart rates throughout the day during various activities to quantify workout intensities and establish their normal heart rate based on large amounts of data.  
+
+A reflectance Photoplethysmography (PPG) sensor is commonly built into smart watches to enable pulse rate estimation at the wrist. A brief description of how a reflectance PPG functions:  
 - The PPG device emits light that is absorbed by red blood cells. Light, that has not been absorbed or transmitted, is reflected back and measured by the PPG's photodetector.  
 - The reflected light is correlated to the amount of present blood cells.  
 - When the heart contracts, blood is released to the body and wrist, so fewer of the PPG's light is reflected.  
@@ -29,9 +31,10 @@ A short description of how a reflectance PPG functions:
 For this project, an algorithm was created to estimate pulse rates from PPG sensor data taken from a study of people running on a treadmill at changing speeds.  
 
 ### Utilizing Accelerometers to Reduce Motion-Related Signal Noise  
-A source of noise for standalone wrist-worn PPG sensors is arm motion.  Swinging an arm back and forth affects how blood flows through the wrist, and this is adds complexity to PPG data.    
+A source of noise for standalone wrist-worn PPG sensors is arm motion. Swinging an arm back and forth affects how blood flows through the wrist, and this is adds complexity to PPG data.    
 
-To reduce the arm motion noise from PPG data, this project uses data from accelerometers which are also frequently built into wearable devices.  3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
+To reduce the arm motion noise from PPG data, this project uses data from accelerometers which are also frequently built into wearable devices. 3-Axis Accelerometers worn on the wrist can measure arm positions, which allows the determination of arm motion frequencies.  By compensating for arm motion frequencies in PPG data, a better pulse rate estimation is achieved.
+
 The performance requirement for this pulse rate estimation algorithm is to meet a mean absolute error, at 90% availability of estimates, of less than 15 BPM compared to pulse rates computed from concurrent ECG measurements.
 
 ### Algorithm and Performance
@@ -210,3 +213,5 @@ Outputs:
 # License
 
 This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md)
+
+[Back to Top](#table-of-contents)
